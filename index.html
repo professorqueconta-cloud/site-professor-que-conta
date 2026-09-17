@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cia. Professor Que Conta | Denis Dias - Contação & Formação Antirracista</title>
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --brown-dark: #2E1A0E;
+      --brown-medium: #4A2E1B;
+      --brown-light: #7A5230;
+      --gold-accent: #D4A359;
+      --gold-hover: #B8863B;
+      --bg-cream: #F7F3E9;
+      --bg-card: #FFFFFF;
+      --text-dark: #1F150C;
+      --text-muted: #5C4A3E;
+      --font-title: 'Cinzel', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Marca d'água no fundo com o Logo Oficial */
+    .watermark-bg::before {
+      content: "";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      max-width: 850px;
+      height: 350px;
+      background-image: url('image_63cb88.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      mix-blend-mode: multiply;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Divisória com padrão Adinkra */
+    .adinkra-divider {
+      height: 24px;
+      background-color: var(--brown-dark);
+      background-image: radial-gradient(var(--gold-accent) 2px, transparent 0);
+      background-size: 16px 16px;
+      border-top: 2px solid var(--gold-accent);
+      border-bottom: 2px solid var(--gold-accent);
+    }
+
+    /* Header e Navegação */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(46, 26, 14, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--gold-accent);
+      z-index: 1000;
+      padding: 0.8rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img-header {
+      height: 40px;
+      width: auto;
+      filter: brightness(0) invert(1) drop-shadow(0px 0px 1px var(--gold-accent));
+      mix-blend-mode: screen;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+    }
+
+    nav a {
+      color: var(--bg-cream);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold-accent);
+    }
+
+    .btn-cta {
+      background: var(--gold-accent);
+      color: var(--brown-dark);
+      padding: 0.6rem 1.4rem;
+      border-radius: 25px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-cta:hover {
+      background: var(--gold-hover);
+      color: #FFF;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 150px 5% 80px;
+      background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-medium) 100%);
+      color: #FFF;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-content h2 {
+      font-size: 0.85rem;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-title);
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .hero-image-grid img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid var(--gold-accent);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      background-color: var(--brown-medium);
+    }
+
+    /* Estrutura Geral */
+    section {
+      padding: 80px 5%;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      color: var(--brown-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* YouTube Story Cards */
+    .yt-story-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1.5rem;
+      background: #FFF;
+      border-radius: 12px;
+      padding: 1.2rem;
+      border-left: 5px solid var(--brown-medium);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .yt-story-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .yt-story-info h3 {
+      font-family: var(--font-title);
+      color: var(--brown-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    /* Cards de Brincadeiras */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .game-card {
+      background: var(--brown-medium);
+      color: #FFF;
+      padding: 2rem;
+      border-radius: 14px;
+      border-top: 4px solid var(--gold-accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .game-card h3 {
+      font-family: var(--font-title);
+      color: var(--gold-accent);
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .game-teaser {
+      background: rgba(255,255,255,0.08);
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      font-style: italic;
+      border-left: 3px solid var(--gold-accent);
+    }
+
+    /* Galeria de Fotos Reais */
+    .insta-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .insta-item {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 240px;
+      border: 2px solid var(--brown-medium);
+      background-color: var(--brown-medium);
+    }
+
+    .insta-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .insta-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* Contatos Oficiais */
+    .contact-section {
+      background: var(--brown-dark);
+      color: #FFF;
+      text-align: center;
+      padding: 80px 5%;
+      border-top: 3px solid var(--gold-accent);
+    }
+
+    .contact-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .contact-box {
+      background: var(--brown-medium);
+      padding: 1.8rem 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--gold-accent);
+      min-width: 280px;
+    }
+
+    .contact-box i {
+      font-size: 2rem;
+      color: var(--gold-accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-box a {
+      color: #FFF;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: block;
+      margin-top: 0.4rem;
+    }
+
+    footer {
+      background: #170C06;
+      color: var(--bg-cream);
+      padding: 35px 5%;
+      text-align: center;
+      font-size: 0.85rem;
+      border-top: 1px solid var(--brown-light);
+    }
+
+    .footer-logo {
+      height: 35px;
+      margin-bottom: 12px;
+      filter: brightness(0) invert(1) opacity(0.85);
+      mix-blend-mode: screen;
+    }
+
+    @media (max-width: 850px) {
+      .hero, .yt-story-card { grid-template-columns: 1fr; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body class="watermark-bg">
+
+  <!-- Header com Logo Oficial -->
+  <header>
+    <a href="#" class="logo-container">
+      <img src="image_63cb88.png" alt="Professor Que Conta Logo" class="logo-img-header">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#historias">Histórias do Canal</a></li>
+        <li><a href="#brincadeiras">Cantigas & Jogos</a></li>
+        <li><a href="#momentos">Momentos Reais</a></li>
+        <li><a href="#contato">Contatos</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/5511987873882" target="_blank" class="btn-cta"><i class="fab fa-whatsapp"></i> Agendar com Denis</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>✦ Adinkra Sankofa & Oralitura ✦</h2>
+      <h1>Semeando Histórias, Resgatando Ancestralidades.</h1>
+      <p>Contações de mitos africanos, cantigas de roda, brincadeiras tradicionais e formações pedagógicas para o cumprimento das Leis 10.639/03 e 11.645/08 na Educação Infantil e Ensino Fundamental.</p>
+      <a href="#contato" class="btn-cta"><i class="fas fa-envelope"></i> Falar com o Professor</a>
+    </div>
+    <div class="hero-image-grid">
+      <img src="b4dab2f0-e418-44cb-b581-c417cc18cac9.jpg" alt="Denis Dias na quadra com as crianças">
+      <img src="20b7c4de-208e-4819-8500-33f40c41a68f.jpg" alt="Denis Dias em formação antirracista">
+    </div>
+  </section>
+
+  <div class="adinkra-divider"></div>
+
+  <!-- Histórias Reais do Canal do YouTube -->
+  <section id="historias">
+    <div class="section-title">
+      <h2>Histórias do Canal</h2>
+      <p>Acesse as narrativas contadas por Denis Dias no canal oficial do YouTube.</p>
+    </div>
+
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div class="yt-story-card">
+        <img src="b4dab2f0-e418-44cb-b581-c417cc18cac9.jpg" alt="O Mito do Baobá Sagrado">
+        <div class="yt-story-info">
+          <h3>O Mito do Baobá Sagrado & A Árvore da Vida</h3>
+          <p>A história da árvore ancestral que guarda os saberes, segredos e a memória dos povos africanos.</p>
+          <a href="https://www.youtube.com/c/ProfessorquecontaContosAfricanos" target="_blank" style="color: var(--brown-medium); font-weight:700;"><i class="fab fa-youtube"></i> Ver no YouTube →</a>
+        </div>
+      </div>
+
+      <div class="yt-story-card">
+        <img src="0b65116e-f7f4-424c-87ef-fc7f5f0f999b.jpg" alt="O Mito do Berimbau">
+        <div class="yt-story-info">
+          <h3>O Mito do Berimbau e Aidê</h3>
+          <p>A narrative musical que apresenta a origem do berimbau, os cânticos de roda e a força da tradição oral.</p>
+          <a href="https://www.youtube.com/c/ProfessorquecontaContosAfricanos" target="_blank" style="color: var(--brown-medium); font-weight:700;"><i class="fab fa-youtube"></i> Ver no YouTube →</a>
+        </div>
+      </div>
+
+      <div class="yt-story-card">
+        <img src="bf031b1e-29a8-418f-9181-12efb17c3045.jpg" alt="As Mulheres Abayomi">
+        <div class="yt-story-info">
+          <h3>As Mulheres Abayomi & O Afeto Encontrado</h3>
+          <p>Uma narrativa sensível sobre ancestralidade, resistência e o simbolismo das bonecas sem costura.</p>
+          <a href="https://www.youtube.com/c/ProfessorquecontaContosAfricanos" target="_blank" style="color: var(--brown-medium); font-weight:700;"><i class="fab fa-youtube"></i> Ver no YouTube →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cantigas & Brincadeiras Reais do Canal -->
+  <section id="brincadeiras" style="background: rgba(74, 46, 27, 0.04);">
+    <div class="section-title">
+      <h2>Cantigas & Brincadeiras Ancestrais</h2>
+      <p>Educadoras e Coordenadoras: saibam como aplicar estes jogos tradicionais em sala de aula ou no pátio da escola!</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="game-card">
+        <div>
+          <h3>Si Si Kumbale (República do Congo)</h3>
+          <p>Cantiga em língua Lingala acompanhada por palmas e ritmo corporal coletivo. Ideal para acolhimento e escuta ativa.</p>
+          <div class="game-teaser">
+            "Professoras: como utilizar esse jogo de mãos para acalmar a turma e trabalhar a coordenação motora?"
+          </div>
+        </div>
+        <a href="#contato" style="color: var(--gold-accent); font-weight: 700; text-decoration: none;">Aprenda no Workshop →</a>
+      </div>
+
+      <div class="game-card">
+        <div>
+          <h3>Mamba / Terra e Mar (África do Sul e Moçambique)</h3>
+          <p>Jogo de agilidade corporal e lógica em grupo que estimula a atenção plena e a ocupação consciente do pátio escolar.</p>
+          <div class="game-teaser">
+            "Uma variação viva do 'Morto e Vivo' que exercita a noção espacial de forma lúdica e africana."
+          </div>
+        </div>
+        <a href="#contato" style="color: var(--gold-accent); font-weight: 700; text-decoration: none;">Agende para sua Escola →</a>
+      </div>
+
+      <div class="game-card">
+        <div>
+          <h3>Cantigas em Yorùbá e Percussão Corporal</h3>
+          <p>Folguedos tradicionais afro-brasileiros que conectam cantos nas línguas originais a instrumentos como berimbau e agogô.</p>
+          <div class="game-teaser">
+            "Como cumprir as Leis 10.639/03 e 11.645/08 através do corpo, do ritmo e do brincar?"
+          </div>
+        </div>
+        <a href="#contato" style="color: var(--gold-accent); font-weight: 700; text-decoration: none;">Solicitar Formação →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Momentos Reais com Fotos do Seu Acervo -->
+  <section id="momentos">
+    <div class="section-title">
+      <h2>Momentos de Contação & Vivências</h2>
+      <p>Registros fotográficos dos encontros com alunos, formações com professores e apresentações em palco.</p>
+    </div>
+
+    <div class="insta-gallery">
+      <div class="insta-item"><img src="b4dab2f0-e418-44cb-b581-c417cc18cac9.jpg" alt="Denis na quadra com as crianças"></div>
+      <div class="insta-item"><img src="ec89437e-c112-49c1-bfce-a55e27e1590e.jpg" alt="Formação pedagógica com educadoras"></div>
+      <div class="insta-item"><img src="0b65116e-f7f4-424c-87ef-fc7f5f0f999b.jpg" alt="Contação de histórias na escola"></div>
+      <div class="insta-item"><img src="76ba5368-62ee-4716-95ff-88d62f39ce4d (1).jpg" alt="Palestra sobre Cultura Afro-Brasileira"></div>
+      <div class="insta-item"><img src="20b7c4de-208e-4819-8500-33f40c41a68f.jpg" alt="Formação com projeção visual"></div>
+      <div class="insta-item"><img src="IMG_0616.jpg" alt="Roda de histórias e musicalidade"></div>
+    </div>
+  </section>
+
+  <!-- Contatos Oficiais -->
+  <section id="contato" class="contact-section">
+    <h2 style="font-family: var(--font-title); font-size: 2.2rem; color: var(--gold-accent); margin-bottom: 0.5rem;">Agende para sua Escola ou Evento</h2>
+    <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto;">Entre em contato direto com Denis Dias para contratar contações de histórias, apresentações ou oficinas de formação docente.</p>
+
+    <div class="contact-boxes">
+      <div class="contact-box">
+        <i class="fab fa-whatsapp"></i>
+        <span style="display:block; font-size:0.85rem; color: var(--gold-accent); text-transform:uppercase;">Celular / WhatsApp</span>
+        <a href="https://wa.me/5511987873882" target="_blank">(11) 98787-3882</a>
+      </div>
+
+      <div class="contact-box">
+        <i class="fas fa-envelope"></i>
+        <span style="display:block; font-size:0.85rem; color: var(--gold-accent); text-transform:uppercase;">E-mail Oficial</span>
+        <a href="mailto:professorqueconta@gmail.com">professorqueconta@gmail.com</a>
+      </div>
+    </div>
+
+    <a href="https://wa.me/5511987873882" target="_blank" class="btn-cta" style="font-size: 1.1rem; padding: 0.8rem 2rem;"><i class="fab fa-whatsapp"></i> Conversar pelo WhatsApp</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <img src="image_63cb88.png" alt="Professor Que Conta Logo" class="footer-logo">
+    <p>&copy; 2026 Cia. Professor Que Conta - Denis Dias. Todos os direitos reservados.</p>
+    <p style="margin-top: 5px; color: var(--gold-accent);">✦ Identidade Visual Ancestral Marrom & Símbolos Adinkra ✦</p>
+  </footer>
+
+  <!-- Script para garantir a renderização das fotos locais se abertas pelo arquivo HTML -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const imgMap = {
+        "b4dab2f0-e418-44cb-b581-c417cc18cac9.jpg": "b4dab2f0-e418-44cb-b581-c417cc18cac9.jpg",
+        "20b7c4de-208e-4819-8500-33f40c41a68f.jpg": "20b7c4de-208e-4819-8500-33f40c41a68f.jpg",
+        "0b65116e-f7f4-424c-87ef-fc7f5f0f999b.jpg": "0b65116e-f7f4-424c-87ef-fc7f5f0f999b.jpg",
+        "bf031b1e-29a8-418f-9181-12efb17c3045.jpg": "bf031b1e-29a8-418f-9181-12efb17c3045.jpg",
+        "76ba5368-62ee-4716-95ff-88d62f39ce4d (1).jpg": "76ba5368-62ee-4716-95ff-88d62f39ce4d (1).jpg",
+        "ec89437e-c112-49c1-bfce-a55e27e1590e.jpg": "ec89437e-c112-49c1-bfce-a55e27e1590e.jpg",
+        "IMG_0616.jpg": "IMG_0616.jpg"
+      };
+
+      document.querySelectorAll("img").forEach(img => {
+        img.onerror = function() {
+          this.style.backgroundColor = "#4A2E1B";
+          this.style.display = "flex";
+          this.style.alignItems = "center";
+          this.style.justifyContent = "center";
+        };
+      });
+    });
+  </script>
+
+</body>
+</html>
